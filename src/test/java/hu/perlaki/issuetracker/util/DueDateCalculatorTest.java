@@ -90,8 +90,8 @@ public class DueDateCalculatorTest
     @Test
     public void testCalculateDueDate_MultipleWeeksTurnaround()
     {
-    	LocalDateTime submitDate = LocalDateTime.of(2017, Month.JUNE, 23, 13, 49), // Friday
-    			expectedDateTime = LocalDateTime.of(2017, Month.JULY, 25, 16, 49);
+        LocalDateTime submitDate = LocalDateTime.of(2017, Month.JUNE, 23, 13, 49), // Friday
+                expectedDateTime = LocalDateTime.of(2017, Month.JULY, 25, 16, 49);
       
         LocalDateTime dueDateTime = dueDateCalculator.CalculateDueDate(submitDate, 179);
       
@@ -101,12 +101,12 @@ public class DueDateCalculatorTest
     @Test
     public void testCalculateDueDate_MultipleWeeksTurnaround_LeapYear_YearEnd()
     {
-		LocalDateTime submitDate = LocalDateTime.of(2019, Month.DECEMBER, 30, 12, 11), // Monday
-				expectedDateTime = LocalDateTime.of(2020, Month.JUNE, 24, 11, 11);
+        LocalDateTime submitDate = LocalDateTime.of(2019, Month.DECEMBER, 30, 12, 11), // Monday
+                expectedDateTime = LocalDateTime.of(2020, Month.JUNE, 24, 11, 11);
       
-		LocalDateTime dueDateTime = dueDateCalculator.CalculateDueDate(submitDate, 1015);
+        LocalDateTime dueDateTime = dueDateCalculator.CalculateDueDate(submitDate, 1015);
 
-		assertEquals(expectedDateTime, dueDateTime);
+        assertEquals(expectedDateTime, dueDateTime);
     }
     
     @Test
