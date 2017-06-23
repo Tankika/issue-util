@@ -54,8 +54,8 @@ public class DueDateCalculator
 
     private LocalDateTime increaseDateWithWholeDays(LocalDateTime date, int turnaroundTime) {
         int turnaroundDays = turnaroundTime / WORK_HOURS_LENGTH,
-                turnaroundWeeks = turnaroundDays / 7,
-                remainingDays = turnaroundDays % 7;
+                turnaroundWeeks = turnaroundDays / 5,
+                remainingDays = turnaroundDays % 5;
         
         date = date.plusWeeks(turnaroundWeeks);
         date = addWorkingDaysToDate(date, remainingDays);
