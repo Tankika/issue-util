@@ -26,14 +26,14 @@ public class DueDateCalculator {
         return dueDate;
     }
 
-    private void validateInputs(LocalDateTime submitDateTime, int turnaroundTime) {
-        validateSubmitDate(submitDateTime);
+    private void validateInputs(LocalDateTime submitDate, int turnaroundTime) {
+        validateSubmitDate(submitDate);
         validateTurnaroundTime(turnaroundTime);
     }
 
-    private void validateSubmitDate(LocalDateTime submitDateTime) {
-        DayOfWeek submitDayOfWeek = submitDateTime.getDayOfWeek();
-        LocalTime submitTime = submitDateTime.toLocalTime();
+    private void validateSubmitDate(LocalDateTime submitDate) {
+        DayOfWeek submitDayOfWeek = submitDate.getDayOfWeek();
+        LocalTime submitTime = submitDate.toLocalTime();
 
         if (!isWorkDay(submitDayOfWeek)) {
             throw new IllegalArgumentException(
