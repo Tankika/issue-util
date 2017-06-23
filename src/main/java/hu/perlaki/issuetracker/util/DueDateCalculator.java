@@ -53,7 +53,8 @@ public class DueDateCalculator {
     }
 
     private LocalDateTime increaseDateWithWholeDays(LocalDateTime date, int turnaroundTime) {
-        int turnaroundDays = turnaroundTime / WORK_HOURS_LENGTH, turnaroundWeeks = turnaroundDays / 5,
+        int turnaroundDays = turnaroundTime / WORK_HOURS_LENGTH,
+                turnaroundWeeks = turnaroundDays / 5,
                 remainingDays = turnaroundDays % 5;
 
         date = date.plusWeeks(turnaroundWeeks);
@@ -80,7 +81,9 @@ public class DueDateCalculator {
         } else {
             int rolloverMinutes = remainingTurnaroundMinutes - remainingMinutesOfDay;
 
-            date = LocalDateTime.of(date.toLocalDate(), WORK_HOURS_START).plusDays(1).plusMinutes(rolloverMinutes);
+            date = LocalDateTime.of(date.toLocalDate(), WORK_HOURS_START)
+                        .plusDays(1)
+                        .plusMinutes(rolloverMinutes);
             date = adjustToNextOrSameWorkingDay(date);
         }
 

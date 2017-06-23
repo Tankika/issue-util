@@ -18,3 +18,12 @@ The library can be compiled by using the Maven tool on the command line (or with
 ## Running Tests
 
 Compiling the library will also run any unit tests found in the project, but you can also run only the tests without producing a `.jar` file. To do this, from the command line you need to navigate into he project's root folder. Here you can invoke the `mvn clean test` command, which will compile the source files and run the tests on them. You can find the result of the tests in the `target/surefire-reports/` directory.
+
+## Notes
+
+As the speicification was not fully clear about some points, I made the following assumptions during implementation:
+1. Submit date has no minimum or maximum value: It would require a Business Analyst to exactly specifiy the valid range of this input.
+2. Turnaround time can be only positive: It makes no sense to have a due date in the past, or even the present for a task.
+3. Turnaround time has no maximum value: Also typically a Business Analyst's task to determine this value, current implementation enables any value, that the platform supports for the data type.
+
+The library's CalculateDueDate method typically throws an exception on invalid arguments. It is the caller's responsibility to call the method with valid parameters, including non-null values. The method also does not check for date overflows, as it is to be handled by the standard date type of the implementation language (also, the maximum value for the java 8 LocalDate class's year is 999999999, which realistically should be enough for any real production uses).
