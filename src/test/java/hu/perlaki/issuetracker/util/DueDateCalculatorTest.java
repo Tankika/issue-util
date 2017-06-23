@@ -87,27 +87,27 @@ public class DueDateCalculatorTest
         assertEquals(expectedDateTime, dueDateTime);
     }
     
-	@Test
-	public void testCalculateDueDate_MultipleWeeksTurnaround()
-	{
-		LocalDateTime submitDate = LocalDateTime.of(2017, Month.JUNE, 23, 13, 49), // Friday
-              expectedDateTime = LocalDateTime.of(2017, Month.JULY, 25, 16, 49);
+    @Test
+    public void testCalculateDueDate_MultipleWeeksTurnaround()
+    {
+    	LocalDateTime submitDate = LocalDateTime.of(2017, Month.JUNE, 23, 13, 49), // Friday
+    			expectedDateTime = LocalDateTime.of(2017, Month.JULY, 25, 16, 49);
       
-      	LocalDateTime dueDateTime = dueDateCalculator.CalculateDueDate(submitDate, 179);
+        LocalDateTime dueDateTime = dueDateCalculator.CalculateDueDate(submitDate, 179);
       
-      	assertEquals(expectedDateTime, dueDateTime);
-	}
+        assertEquals(expectedDateTime, dueDateTime);
+    }
     
-	@Test
-	public void testCalculateDueDate_MultipleWeeksTurnaround_LeapYear_YearEnd()
-	{
+    @Test
+    public void testCalculateDueDate_MultipleWeeksTurnaround_LeapYear_YearEnd()
+    {
 		LocalDateTime submitDate = LocalDateTime.of(2019, Month.DECEMBER, 30, 12, 11), // Monday
-              expectedDateTime = LocalDateTime.of(2020, Month.JUNE, 24, 11, 11);
+				expectedDateTime = LocalDateTime.of(2020, Month.JUNE, 24, 11, 11);
       
-      	LocalDateTime dueDateTime = dueDateCalculator.CalculateDueDate(submitDate, 1015);
-      
-      	assertEquals(expectedDateTime, dueDateTime);
-	}
+		LocalDateTime dueDateTime = dueDateCalculator.CalculateDueDate(submitDate, 1015);
+
+		assertEquals(expectedDateTime, dueDateTime);
+    }
     
     @Test
     public void testCalculateDueDate_HighestTurnaroundTime()
@@ -179,7 +179,7 @@ public class DueDateCalculatorTest
     @Test(expected=DateTimeException.class)
     public void testCalculateDueDate_DateTooHigh()
     {
-    	LocalDateTime submitDate = LocalDateTime.of(LocalDate.MAX, LocalTime.of(17, 0));
+        LocalDateTime submitDate = LocalDateTime.of(LocalDate.MAX, LocalTime.of(17, 0));
         dueDateCalculator.CalculateDueDate(submitDate, 24);
     }
 }
